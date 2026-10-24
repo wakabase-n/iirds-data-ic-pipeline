@@ -103,5 +103,5 @@ While personal testing and learning are entirely unrestricted, please note that 
 
 If your organization intends to deploy graph-aware atomic architectures or standardized metadata schemas in a commercial, production, or real-world industrial environment, you are strongly urged to:
 
-1. **Consult the official primary sources**: Directly review the definitive specifications, official schemas, and validation toolkits at the [iiRDS Official Website](https://www.google.com/search?q=https://iirds.org/).
+1. **Consult the official primary sources**: Directly review the definitive specifications, official schemas, and validation toolkits at the [iiRDS Official Website](https://iirds.org/).
 2. **Architect your own semantic model**: Do not blindly copy-paste these specific SP-X sample assets into production. Re-engineer and tailor your own knowledge graph frameworks based on the official guidelines to ensure true regulatory compliance, operational safety, and product liability (PL) defense.
