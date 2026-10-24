@@ -1,0 +1,6 @@
+PartNumber,Symbol,Min,Typ,Max,Unit,SKOS_URI,SourceFile
+urn:product:ISE-NAND01G-3V3_1Gb_Serial_NAND_Flash_Memory,VCC,2.7,3.3,3.6,V,http://example.org/concept/PowerSupplyVoltage,./data/iirds_data_ic.jsonld
+urn:product:ISE-NAND01G-3V3_1Gb_Serial_NAND_Flash_Memory,VCC_MAX,-0.5,,4.6,V,http://example.org/concept/AbsoluteMaxVoltage,./data/iirds_data_ic.jsonld
+urn:product:ISE-NAND01G-3V3_1Gb_Serial_NAND_Flash_Memory,VIH,0.8 * VCC,,VCC + 0.3,V,http://example.org/concept/HighLevelInputVoltage,./data/iirds_data_ic.jsonld
+urn:product:ISE-NAND01G-3V3_1Gb_Serial_NAND_Flash_Memory,VIL,-0.3,,0.2 * VCC,V,http://example.org/concept/LowLevelInputVoltage,./data/iirds_data_ic.jsonld
+urn:product:ISE-NAND01G-3V3_1Gb_Serial_NAND_Flash_Memory,VAUX,4.5,5.0,5.5,V,http://example.org/concept/AuxiliaryPowerSupplyVoltage,./data/iirds_data_ic.jsonld

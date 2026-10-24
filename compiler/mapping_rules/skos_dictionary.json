@@ -1,0 +1,17 @@
+{
+  "symbols": {
+    "VCC": "http://example.org/concept/PowerSupplyVoltage",
+    "VCC_MAX": "http://example.org/concept/AbsoluteMaxVoltage",
+    "VIH": "http://example.org/concept/HighLevelInputVoltage",
+    "VIL": "http://example.org/concept/LowLevelInputVoltage",
+    "VAUX": "http://example.org/concept/AuxiliaryPowerSupplyVoltage"
+  },
+  "keywords": {
+    "thermal damage": "http://example.org/concept/ThermalHazard",
+    "logic failure": "http://example.org/concept/FunctionalFailure",
+    "power-up sequence": "http://example.org/concept/PowerSequence",
+    "Brown-out state": "http://example.org/concept/BrownOut",
+    "protection lock": "http://example.org/concept/OverVoltageProtection",
+    "permanent electrical damage": "http://example.org/concept/PermanentDamage"
+  }
+}

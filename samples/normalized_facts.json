@@ -1,0 +1,197 @@
+{
+  "product_identification": "ISE-NAND01G-3V3 1Gb Serial NAND Flash Memory",
+  "components": [
+    {
+      "id": "B-01",
+      "name": "VCC",
+      "category": "Power",
+      "description": "Core Power Supply (3.3V)"
+    },
+    {
+      "id": "B-02",
+      "name": "VSS",
+      "category": "Ground",
+      "description": "Core Ground"
+    },
+    {
+      "id": "B-03",
+      "name": "CLE",
+      "category": "Input",
+      "description": "Command Latch Enable"
+    },
+    {
+      "id": "B-04",
+      "name": "ALE",
+      "category": "Input",
+      "description": "Address Latch Enable"
+    },
+    {
+      "id": "B-05",
+      "name": "CE#",
+      "category": "Input",
+      "description": "Chip Enable (Active Low)"
+    },
+    {
+      "id": "B-06",
+      "name": "IO0",
+      "category": "I/O",
+      "description": "Data Input/Output 0"
+    },
+    {
+      "id": "B-07",
+      "name": "IO1",
+      "category": "I/O",
+      "description": "Data Input/Output 1"
+    },
+    {
+      "id": "B-08",
+      "name": "AUX_PWR",
+      "category": "Power",
+      "description": "Auxiliary Power Supply for Emergency Operation"
+    }
+  ],
+  "technical_data": [
+    {
+      "parameter": "Supply Voltage",
+      "symbol": "VCC",
+      "unit": "V",
+      "numeric_values": {
+        "min": 2.7,
+        "typ": 3.3,
+        "max": 3.6
+      },
+      "formula_values": {
+        "min_formula": null,
+        "max_formula": null
+      },
+      "test_condition": "Normal Operation"
+    },
+    {
+      "parameter": "Absolute Max Voltage",
+      "symbol": "VCC_MAX",
+      "unit": "V",
+      "numeric_values": {
+        "min": -0.5,
+        "typ": null,
+        "max": 4.6
+      },
+      "formula_values": {
+        "min_formula": null,
+        "max_formula": null
+      },
+      "test_condition": "Stress Rating Only"
+    },
+    {
+      "parameter": "High Level Input Voltage",
+      "symbol": "VIH",
+      "unit": "V",
+      "numeric_values": {
+        "min": null,
+        "typ": null,
+        "max": null
+      },
+      "formula_values": {
+        "min_formula": "0.8 * VCC",
+        "max_formula": "VCC + 0.3"
+      },
+      "test_condition": null
+    },
+    {
+      "parameter": "Low Level Input Voltage",
+      "symbol": "VIL",
+      "unit": "V",
+      "numeric_values": {
+        "min": -0.3,
+        "typ": null,
+        "max": null
+      },
+      "formula_values": {
+        "min_formula": null,
+        "max_formula": "0.2 * VCC"
+      },
+      "test_condition": null
+    },
+    {
+      "parameter": "Auxiliary Supply Voltage",
+      "symbol": "VAUX",
+      "unit": "V",
+      "numeric_values": {
+        "min": 4.5,
+        "typ": 5.0,
+        "max": 5.5
+      },
+      "formula_values": {
+        "min_formula": null,
+        "max_formula": null
+      },
+      "test_condition": "Emergency State"
+    }
+  ],
+  "statements_and_rules": [
+    {
+      "rule_id": "Section 2 Compliance",
+      "section_title": "2. Absolute Maximum Ratings and DC Operating Characteristics",
+      "raw_text": "Specifications in this section must be strictly followed to prevent thermal damage or logic failure.",
+      "fact_elements": {
+        "trigger_signal": null,
+        "target_component": "System / Device",
+        "required_value": "Strict adherence to specifications",
+        "duration": null
+      },
+      "text_keywords": [
+        "thermal damage",
+        "logic failure",
+        "strictly followed"
+      ]
+    },
+    {
+      "rule_id": "3.1",
+      "section_title": "3.1 Power-Up Sequence",
+      "raw_text": "During the power-up sequence, VCC must reach a stable voltage within 10ms. The Chip Enable signal (CE#) must remain High (VIH) until VCC reaches the minimum operating voltage of 2.7V. If VCC drops below 2.2V (Brown-out state), the internal reset circuit is activated immediately to prevent data corruption.",
+      "fact_elements": {
+        "trigger_signal": "Power-up sequence / Brown-out state (< 2.2V)",
+        "target_component": "Internal reset circuit / CE# / VCC",
+        "required_value": "VCC >= 2.7V, CE# = VIH",
+        "duration": "within 10ms"
+      },
+      "text_keywords": [
+        "power-up sequence",
+        "Brown-out state",
+        "data corruption",
+        "internal reset circuit"
+      ]
+    },
+    {
+      "rule_id": "Rule #101",
+      "section_title": "3.2 Interlock and Safety Exceptions",
+      "raw_text": "When the applied voltage on VCC exceeds 3.6V, the internal controller shall issue a protection lock and disable all Write/Erase operations.",
+      "fact_elements": {
+        "trigger_signal": "VCC > 3.6V",
+        "target_component": "Internal controller / Write/Erase operations",
+        "required_value": "Protection lock / Disable Write/Erase",
+        "duration": null
+      },
+      "text_keywords": [
+        "protection lock",
+        "disable Write/Erase operations",
+        "Over-voltage Protection"
+      ]
+    },
+    {
+      "rule_id": "Rule #102",
+      "section_title": "3.2 Interlock and Safety Exceptions",
+      "raw_text": "When Error Code E-404 (Over-current / Motor Overload Signal) is asserted by the host system, AUX_PWR must remain supplied at 5.0V for at least 30 seconds to complete the internal safe-discharge sequence. Opening the module cover or cutting AUX_PWR before 30 seconds have elapsed may cause permanent electrical damage to the microbump array.",
+      "fact_elements": {
+        "trigger_signal": "Error Code E-404",
+        "target_component": "AUX_PWR",
+        "required_value": "5.0V",
+        "duration": ">= 30 seconds"
+      },
+      "text_keywords": [
+        "permanent electrical damage",
+        "safe-discharge sequence",
+        "Error Code E-404"
+      ]
+    }
+  ]
+}

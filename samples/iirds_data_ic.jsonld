@@ -1,0 +1,176 @@
+{
+  "@context": {
+    "iirds": "http://eclass.red/iirds/1.1#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ise": "http://example.org/iirds/extension#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:product:ISE-NAND01G-3V3_1Gb_Serial_NAND_Flash_Memory",
+      "@type": "iirds:Component",
+      "rdfs:label": "ISE-NAND01G-3V3 1Gb Serial NAND Flash Memory"
+    },
+    {
+      "@id": "urn:techdata:VCC",
+      "@type": "iirds:GenericTechnicalData",
+      "rdfs:label": "Supply Voltage",
+      "ise:symbol": "VCC",
+      "ise:unit": "V",
+      "ise:values": {
+        "min": 2.7,
+        "typ": 3.3,
+        "max": 3.6
+      },
+      "skos:exactMatch": "http://example.org/concept/PowerSupplyVoltage"
+    },
+    {
+      "@id": "urn:techdata:VCC_MAX",
+      "@type": "iirds:GenericTechnicalData",
+      "rdfs:label": "Absolute Max Voltage",
+      "ise:symbol": "VCC_MAX",
+      "ise:unit": "V",
+      "ise:values": {
+        "min": -0.5,
+        "typ": null,
+        "max": 4.6
+      },
+      "skos:exactMatch": "http://example.org/concept/AbsoluteMaxVoltage"
+    },
+    {
+      "@id": "urn:techdata:VIH",
+      "@type": "iirds:GenericTechnicalData",
+      "rdfs:label": "High Level Input Voltage",
+      "ise:symbol": "VIH",
+      "ise:unit": "V",
+      "ise:values": {
+        "min": null,
+        "typ": null,
+        "max": null
+      },
+      "ise:formula": {
+        "min_formula": "0.8 * VCC",
+        "max_formula": "VCC + 0.3"
+      },
+      "skos:exactMatch": "http://example.org/concept/HighLevelInputVoltage"
+    },
+    {
+      "@id": "urn:techdata:VIL",
+      "@type": "iirds:GenericTechnicalData",
+      "rdfs:label": "Low Level Input Voltage",
+      "ise:symbol": "VIL",
+      "ise:unit": "V",
+      "ise:values": {
+        "min": -0.3,
+        "typ": null,
+        "max": null
+      },
+      "ise:formula": {
+        "min_formula": null,
+        "max_formula": "0.2 * VCC"
+      },
+      "skos:exactMatch": "http://example.org/concept/LowLevelInputVoltage"
+    },
+    {
+      "@id": "urn:techdata:VAUX",
+      "@type": "iirds:GenericTechnicalData",
+      "rdfs:label": "Auxiliary Supply Voltage",
+      "ise:symbol": "VAUX",
+      "ise:unit": "V",
+      "ise:values": {
+        "min": 4.5,
+        "typ": 5.0,
+        "max": 5.5
+      },
+      "skos:exactMatch": "http://example.org/concept/AuxiliaryPowerSupplyVoltage"
+    },
+    {
+      "@id": "urn:rule:Section_2_Compliance",
+      "@type": "iirds:GenericConcept",
+      "rdfs:label": "2. Absolute Maximum Ratings and DC Operating Characteristics",
+      "iirds:hasText": "Specifications in this section must be strictly followed to prevent thermal damage or logic failure.",
+      "ise:factElements": {
+        "trigger_signal": null,
+        "target_component": "System / Device",
+        "required_value": "Strict adherence to specifications",
+        "duration": null
+      },
+      "ise:rawKeywords": [
+        "thermal damage",
+        "logic failure",
+        "strictly followed"
+      ],
+      "skos:relatedConcept": [
+        "http://example.org/concept/ThermalHazard",
+        "http://example.org/concept/FunctionalFailure"
+      ],
+      "iirds:dangerLevel": "iirds:WARNING"
+    },
+    {
+      "@id": "urn:rule:3.1",
+      "@type": "iirds:GenericConcept",
+      "rdfs:label": "3.1 Power-Up Sequence",
+      "iirds:hasText": "During the power-up sequence, VCC must reach a stable voltage within 10ms. The Chip Enable signal (CE#) must remain High (VIH) until VCC reaches the minimum operating voltage of 2.7V. If VCC drops below 2.2V (Brown-out state), the internal reset circuit is activated immediately to prevent data corruption.",
+      "ise:factElements": {
+        "trigger_signal": "Power-up sequence / Brown-out state (< 2.2V)",
+        "target_component": "Internal reset circuit / CE# / VCC",
+        "required_value": "VCC >= 2.7V, CE# = VIH",
+        "duration": "within 10ms"
+      },
+      "ise:rawKeywords": [
+        "power-up sequence",
+        "Brown-out state",
+        "data corruption",
+        "internal reset circuit"
+      ],
+      "skos:relatedConcept": [
+        "http://example.org/concept/PowerSequence",
+        "http://example.org/concept/BrownOut"
+      ]
+    },
+    {
+      "@id": "urn:rule:Rule_#101",
+      "@type": "iirds:GenericConcept",
+      "rdfs:label": "3.2 Interlock and Safety Exceptions",
+      "iirds:hasText": "When the applied voltage on VCC exceeds 3.6V, the internal controller shall issue a protection lock and disable all Write/Erase operations.",
+      "ise:factElements": {
+        "trigger_signal": "VCC > 3.6V",
+        "target_component": "Internal controller / Write/Erase operations",
+        "required_value": "Protection lock / Disable Write/Erase",
+        "duration": null
+      },
+      "ise:rawKeywords": [
+        "protection lock",
+        "disable Write/Erase operations",
+        "Over-voltage Protection"
+      ],
+      "skos:relatedConcept": [
+        "http://example.org/concept/OverVoltageProtection"
+      ],
+      "iirds:dangerLevel": "iirds:WARNING"
+    },
+    {
+      "@id": "urn:rule:Rule_#102",
+      "@type": "iirds:GenericConcept",
+      "rdfs:label": "3.2 Interlock and Safety Exceptions",
+      "iirds:hasText": "When Error Code E-404 (Over-current / Motor Overload Signal) is asserted by the host system, AUX_PWR must remain supplied at 5.0V for at least 30 seconds to complete the internal safe-discharge sequence. Opening the module cover or cutting AUX_PWR before 30 seconds have elapsed may cause permanent electrical damage to the microbump array.",
+      "ise:factElements": {
+        "trigger_signal": "Error Code E-404",
+        "target_component": "AUX_PWR",
+        "required_value": "5.0V",
+        "duration": ">= 30 seconds"
+      },
+      "ise:rawKeywords": [
+        "permanent electrical damage",
+        "safe-discharge sequence",
+        "Error Code E-404"
+      ],
+      "skos:relatedConcept": [
+        "http://example.org/concept/PermanentDamage"
+      ],
+      "iirds:dangerLevel": "iirds:DANGER"
+    }
+  ]
+}
