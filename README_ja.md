@@ -32,9 +32,13 @@
 │   │   ├── jsonld_exporter.py    # JSON-LD出力モジュール
 │   │   └── skos_enricher.py      # SKOS概念バインドモジュール
 │   └── main.py               # コンパイラ実行のメインスクリプト
-├── docs/                     # アーキテクチャおよび中間フォーマットの仕様書
-│   ├── architecture
-│   └── intermediate_format
+├── docs/
+│   ├── images/                     # アーキテクチャ図および検証ベンチマーク画像アセット
+│   ├── architecture.md             # システムアーキテクチャおよび段階的確定論的パイプライン仕様書 (EN)
+│   ├── architecture_ja.md          # システムアーキテクチャ仕様書 (JA)
+│   ├── intermediate_format.md      # 中間正規化JSONスキーマの設計原則と仕様定義 (EN)
+│   ├── intermediate_format_ja.md   # 中間フォーマット仕様書 (JA)
+│   └── verification_details.md     # Neo4j論理シミュレーション検証ベンチマークおよびCypherクエリ詳細 (検証1〜6)
 ├── neo4j/                    # 論理シミュレータ（Neo4j）用ディレクトリ
 │   └── 検証用クエリ          # What-if分析・影響範囲特定用のCypherクエリスクリプト
 ├── projections/              # 生成された知識グラフからCAD/DRC用CSVへの切り出し処理と成果物
