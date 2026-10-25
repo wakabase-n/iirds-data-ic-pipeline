@@ -32,9 +32,12 @@ The directory structure is organized as follows:
 │   │   ├── jsonld_exporter.py    # Exports the validated JSON-LD
 │   │   └── skos_enricher.py      # Binds SKOS concept URIs
 │   └── main.py               # Main compiler execution script
-├── docs/                     # Documentation for architecture and schemas
-│   ├── architecture
-│   └── intermediate_format
+├── docs/
+│   ├── architecture.md             # System architecture and phased deterministic pipeline specifications
+│   ├── architecture_ja.md          # System architecture specifications (Japanese)
+│   ├── intermediate_format.md      # Simple Normalized JSON schema design principles and specifications
+│   ├── intermediate_format_ja.md   # Intermediate format specifications (Japanese)
+│   └── verification_details.md     # Neo4j pre-silicon logic simulation benchmarks & Cypher queries (Verifications 1–6)
 ├── neo4j/                    # Logic Simulator (Neo4j) queries
 │   └── verification_queries  # Cypher scripts for What-If analysis and impact tracing
 ├── projections/              # Extraction scripts and final outputs for CAD/DRC CSVs
