@@ -1,4 +1,3 @@
-
 # Formal Verification & Neo4j Logic Simulation Details
 
 This document provides the complete empirical verification dataset and query execution results for the "Data IC" Knowledge Graph (`iirds_data_ic.jsonld`). 
@@ -70,7 +69,8 @@ _Total: 23 nodes seamlessly mapped._
 - **Complete Semantic Fidelity:** All 23 nodes—spanning root product definitions (`Component`), dynamic specifications (`TechnicalData`), operational constraints (`RuleConcept`), domain ontology concepts (`SKOSConcept`), and classification tags (`DangerLevel`)—retained exact class types without dropping complex formulas or condition keys.
 - **Eliminating False Negatives:** In deterministic safety verification, a missing graph node directly causes safety auditing oversights. This verification guarantees that subsequent impact analyses operate on a 100% complete topological replica of the technical specification.
 
-![](verification_01_zero-loss.png)
+<img width="1152" height="630" alt="verification_01_zero-loss" src="https://github.com/user-attachments/assets/a4e3f05c-0b00-430f-a501-18957831c307" />
+
 
 ---
 ## Verification 2: Impact Analysis & Hazard Traversal
@@ -92,7 +92,7 @@ RETURN path
 - **Pre-Silicon Preventive Checking:** Engineers can query any component identifier and immediately extract all catastrophic paths before laying a single PCB trace or routing micro-bump arrays, preventing permanent hardware destruction.
 - **Signal-to-Noise Ratio:** By filtering strictly for terminal `DANGER` nodes, design teams bypass non-critical descriptions and isolate high-severity failure modes instantly.
 
-![](verification_02_impact_path.png)
+<img width="1171" height="647" alt="verification_02_impact_path" src="https://github.com/user-attachments/assets/94351f0d-56d1-4a46-8e4e-d0ae81159363" />
 
 ---
 ## Verification 3: Cross-Vendor Semantic Normalization via SKOS
@@ -120,7 +120,7 @@ RETURN t.symbol AS Symbol, t.label AS Description, s.uri AS SKOS_URI
 - **Absorbing Dialect Variations:** In multi-supplier chiplet environments, one vendor labels a power pin `VCC` while another uses `VDD` or `Power Supply`. SKOS concept mapping resolves syntactic fragmentation without requiring brittle regex parsers.
 - **Unified EDA Rule Engines:** Downstream DRC and CAD library tools can bind validation rules directly to persistent SKOS URIs rather than supplier-specific local names.
 
-![](verification_03_skos_mapping.png)
+<img width="1162" height="635" alt="verification_03_skos_mapping" src="https://github.com/user-attachments/assets/461e9247-ed63-41f3-b57b-0647c5add2db" />
 
 ---
 ## Verification 4: Automated Safety Audit & Risk Prioritization
@@ -141,7 +141,7 @@ ORDER BY d.level ASC
 ```
 
 ### Result
-![](verification_04_safety_audit.png)
+<img width="1164" height="639" alt="verification_04_safety_audit" src="https://github.com/user-attachments/assets/6a305442-78a1-424c-883d-06e5035e5b98" />
 
 ### Architectural Insight
 - **Deterministic Priority Sorting:** Critical failure modes (such as `Rule_#102`, requiring a mandatory 30-second auxiliary power retention under Error E-404 to avoid micro-bump destruction) are sorted directly to the top of the engineering review stack.
@@ -164,7 +164,7 @@ RETURN path, dangerPath, skosPath
 ```
 
 ### Result
-![](verification_05_what_if_simulation.png)
+<img width="1169" height="640" alt="verification_05_what_if_simulation" src="https://github.com/user-attachments/assets/2b8340ba-4d5c-4096-9737-221a46a9853f" />
 
 ### Architectural Insight
 - **Dynamic Scope Traversal:** Simulating a `VCC` variation instantly returns both sequencing constraints (`3.1 Power-Up Sequence`) and active protection mechanisms (`3.2 Interlock and Safety Exceptions`), identifying the complete blast radius of an electrical condition.
@@ -191,7 +191,7 @@ ORDER BY CommonConcept, Component
 ```
 
 ### Result
-![](verification_06_cross_vendor_diff.png)
+<img width="1166" height="639" alt="verification_06_cross_vendor_diff" src="https://github.com/user-attachments/assets/b2f202e1-c2c7-440d-88f0-1ed838fb4792" />
 
 ### Architectural Insight
 - **Hub-and-Spoke Scalability:** Rather than building $N \times M$ point-to-point translation bridges between different vendor catalogs, specifications connect via a central SKOS hub. Adding a new supplier's die requires zero query modifications.
